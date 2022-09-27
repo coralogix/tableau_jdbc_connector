@@ -1,0 +1,32 @@
+<!-- the field names are this stupid so it passes connector-packager validation -->
+<connection-fields>
+    <field name="authentication" label="Region" category="authentication" value-type="selection" default-value="auth-pass">
+        <selection-group>
+            <option value="auth-user" label="Region and key"/>
+            <option value="auth-none" label="Custom url"/>
+        </selection-group>
+    </field>
+    <field name="v-region" label="Region" value-type="selection" category="endpoint">
+        <conditions>
+            <condition field="authentication" value="auth-user"/>
+        </conditions>
+        <selection-group>
+            <option value="Production" label="Production"/>
+            <option value="Mumbai" label="Mumbai"/>
+            <option value="US" label="US"/>
+            <option value="AP Prod2" label="AP Prod2"/>
+            <option value="EU Prod2" label="EU Prod2"/>
+            <option value="Staging" label="Staging"/>
+        </selection-group>
+    </field>
+    <field name="username" label="Logs key" category="authentication" value-type="string">
+        <conditions>
+            <condition field="authentication" value="auth-user"/>
+        </conditions>
+    </field>
+    <field name="server" label="Custom URL" value-type="string" category="endpoint">
+        <conditions>
+            <condition field="authentication" value="auth-none"/>
+        </conditions>
+    </field>
+</connection-fields>
